@@ -1,0 +1,141 @@
+<!doctype html>
+
+<head>
+    <title>Portfolio | {% block title %}Accueil{% endblock %}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='plugins.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='custom.css') }}">
+</head>
+
+<body class="breakpoint-md b--responsive">
+<div class="body-inner">
+<nav class="navbar navbar-light bg-light">
+    <ul class="top-menu flex-row-reverse navbar-nav ms-auto" style="float:right;">   
+      <div class="d-none d-sm-block">
+          <div class="social-icons social-icons-colored-hover">
+                  <li class="social-linkedin"><a href="https://www.linkedin.com/in/mfgiguere/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                  <li class="social-github"><a href="https://github.com/MFGiguere" target="_blank"><i class="fab fa-github"></i></a></li>
+                  <li class="social-facebook"><a href="https://www.researchgate.net/profile/Maxime-F-Giguere" target="_blank"><i class="fab fa-researchgate"></i></a></li>
+              
+            </div>
+          </div>
+        </ul>  
+      </nav> 
+    <nav class="navbar navbar-light bg-light">
+      <div style="margin-left:24px">
+        <p>
+          <b>Maxime F. Giguère</b>
+        </p>
+        <p>
+          Technologies | Santé | Justice
+        </p>
+    </div>
+    <div id="mainMenu-trigger" style="margin-right:24px">
+      <a class="lines-button x"><span class="lines"></span></a>
+    </div>
+
+    <div id="mainMenu">
+      <div class="container">
+          <nav>
+              <ul>
+                                              <li class="dropdown"><span class="dropdown-arrow"></span>
+                      <a href="/">Accueil</a>
+                                                  </li>    
+                                                     
+                      <li><a href="{{ url_for('cv', theme='interets') }}">
+                        Intérêts
+                      </a></li>
+
+                      <li><a href="{{ url_for('cv', theme='competences') }}">
+                        Compétences
+                      </a></li>
+
+                      <li><a href="{{ url_for('cv', theme='emplois') }}">
+                          Emplois
+                      </a></li>
+
+                      <li><a href="{{ url_for('cv', theme='projets') }}">
+                        Extras
+                      </a></li>
+              </ul>
+          </nav>
+      </div>
+  </div>
+      </nav>
+
+<section id="page-content" style="border-top: 2px solid black">
+  <div class="container-fluid row">
+    {% block content %}
+    <div class="post-item border">
+      <div class="post-item-wrap">
+          <div class="post-item-description">
+            <img src="{{ url_for('static', filename='images/photo.jpg') }}"  alt="..." style="left:50%; border-radius:50%; width:20em">
+
+      <p>Bienvenue sur le portfolio de Maxime F. Giguère!</p> 
+      <p>Une image vaut mille mots - ce portfolio construit avec Flask et Bootstrap a pour objectif d'illustrer mes compétences en création de sites web. Il présente en même temps mes principales réalisations professionnelles, mes compétences et les intérêts qui me passionnent en recherche et en emploi. Dans la section « Extras », vous trouverez différents projets personnels supplémentaires que j'ai réalisés! </p>
+      <p>Avant de poursuivre, je vous invite à utiliser le bouton « Générer » ci-dessous. Celui-ci générera automatiquement une fausse citation de Nietzsche construite à partir d'un modèle d'intelligence artificielle. C'est le type de projet personnel dont vous trouverez le code dans la section « Extras » ;).</p>
+      <p><a href="{{ url_for('nietzsche') }}" style="color: #000000;">Générer</a></p>
+  </div>
+    {%block quote %}{% endblock %}
+  </div></div>
+    {% endblock %}
+  </div>
+</section>
+
+<div class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer id="footer">
+  <div class="footer-content">
+      <div class="container">  
+          <div class="row">
+              <div class="col-lg-6">
+                <div class="copyright-text">© Copyright - Maxime F. Giguère - Portfolio 1.0 (juin 2023)</div>
+              </div>
+              <div class="col-lg-6">
+                  <div class="row" style="float:right;">
+                      <div id="mainMenu">
+                          <div class="container">
+                              <nav>
+                                  <ul>
+                                      <li><a href="/">Accueil</a></li>
+                                      <li><a href="/" data-toggle="modal" data-target="#exampleModal">Contact</a></li>
+                                
+                                                                              </ul>
+                              </nav>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</footer>
+
+
+
+<a id="scrollTop" style="bottom: 26px; opacity: 1; z-index: 199;"><i class="fa fa-chevron-up"></i></a>
+<script src="https://kit.fontawesome.com/6a9a82bffb.js" crossorigin="anonymous"></script>
+<script src="{{ url_for('static', filename='custom.js') }}" crossorigin="anonymous"></script>
+</body> 

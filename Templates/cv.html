@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}{{ Theme }}{% endblock %}
+
+{% block content %}
+<div id="blog" class="grid-layout post-3-columns m-b-30 grid-loaded" data-item="post-item" data-stagger="10" style="margin: 0px -20px -20px 0px; position: relative; height: 720px;">
+    <h1>{{ Theme }}</h1> asdasd
+    <!-- Post item-->
+    {% for post in posts %}
+    <div class="post-item-a post-item border    ">
+        <div class="post-item-wrap">
+            <div class="post-item-description">
+                <div class="post-image" style="background-image: url('/static/images/{{ post[5] }}');"></div>
+                <span class="post-meta-date"><i class="fa fa-calendar-o"></i>{{ post[4] }}</span><a href="{{ post[3]}}"><i class="fas fa-link" ></i></a>
+                <h2>{{ post[1] }}</h2> 
+                {% if post[2] %}
+                <h3>{{ post[2] }}</h3>
+                {% endif %}
+                <div style="padding-bottom:1em;">
+                    <p>{{ post[6] | safe}}</p>
+                </div>
+                <button class="modal-btn btn btn-secondary" target="{{ post[1][0:20] }}">En apprendre davantage</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="{{ post[1][0:20] }}" class="modal" style="background-color:gray">
+        <div class="modal-dialog" role="document" >
+            <div class="modal-content">
+                <div class="post-image" style="background-image: url('/static/images/{{ post[5] }}'); padding:40px"></div>
+
+                <div class="modal-header">
+                    <span class="close">×</span>
+                    <h5 class="modal-title">{{ post[1] }}</h5>
+                </div>
+                <div class="modal-body">
+                    <p>{{ post[6] | safe}}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary close">Retour</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

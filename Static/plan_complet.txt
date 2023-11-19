@@ -1,0 +1,145 @@
+0. Résumé
+Le projet consisterait à créer et implanter une interface web afin de recueillir des mesures rapportées par les patient-e-s sur leur état de santé. Le projet couvrirait toutes les étapes d'une implantation de solution numérique: description qualitative des besoins avec des patient-e-s, développement et implantation de la solution numérique, et évaluation quantitative des résultats de son implantation.  
+
+Durant la phase de description qualitative, nous déterminerions le type de données à intégrer à l'outil et les bénéfices potentiels pour les patient-e-s. Pour l'instant, nous pensons que des données autorapportées à définir avec des patient-e-s partenaires ainsi que des données générées par des appareils intelligents et connectées via API permettraient d'offrir un éventail intéressant de données. Cette phase servira aussi à déterminer avec les patient-e-s partenaires les bénéfices attendus du projet. Nous projetons que la connexion de différentes sources de données dans une interface qui offre de la rétroaction via des tableaux de bord est l'un des bénéfice qui sera retenu à cette phase. Si possible, nous aimerions aussi que les données de l'interface puisse alimenter le Dossier Santé Numérique, dossier de santé provincial qui sera bientôt déployé: rendre des données autorapportées disponibles aux professionnel-le-s de la santé constituerait un bénéfice majeur de ce projet. 
+
+En parallèle aux bénéfices pratiques du projet, nous projetons aussi des bénéfices théoriques. Le portail agirait donc comme une base de données massives de mesures autorapportées. Nous croyons que la création d'une nouvelle base de données de ce type en santé permettra de stimuler la recherche scientifique en santé.
+
+La phase de développement et d'implantation servirait d'abord à la programmation de la solution. Nous nous chargerons en bonne partie de la programmation de la solution, mais celle-ci sera validée par une équipe de programmation. Enfin, l'évaluation quantitative des résultats permettra de valider quelques indicateurs dont le taux d'utilisation de la base de données.
+
+En somme, il s'agit d'un projet multidisciplinaire qui nécessite des connaissances en technologies et en santé, mais qui a pour fondement des principes éthiques: l'
+
+. Il nécessitera des compétences sur le plan des technologies et des sciences de la santé, mais a pour principes directeurs des considérations éthiques et épistémologiques. 
+
+0. Structure du travail 
+Cette section vise à détailler les différentes sections qui seront contenues dans la thèse. 
+
+Étape 1 - Planification - Revue de littérature
+L'étape 1 comprendrait quatre chapitres qui poseraient les fondements du projet: fondements épistémologiques, fondements des sciences de la santé, fondements technologiques, fondements légaux. 
+
+Dans « fondements épistémologiques », j'expliquerais ce qu'est l'épistémologie des points de vue puisque c'est un postulat de la recherche. Je pourrais rappeler les contributions faites par les patients au fil de l'histoire via, entre autre, mon mémoire.
+
+Dans « fondements des sciences de la santé », je présenterais les deux types de données médicales qui proviennent des patients de manière primaire.  
+
+Dans « fondements psychologiques », je veux mettre l'emphase sur les bénéfices pour le patient d'être acteur dans son propre parcours de soins. 
+
+Dans « fondements légaux », j'aborderais le contexte légal particulier au Québec qui encadre la tenue de dossier patients en santé, la mise en place du DSN via le PL3. J'aborderais aussi le droit prévu à la LSSSS des patient-e-s des des personnes actives et décisionnelles dans leur parcours de santé. Dans le cadre de mon projet, j'aimerais aussi que le tout soit collaboratif et c'est dans cette section que j'expliquerais les discussions avec le MSSS que l'on trouverait en annexe. Je veux aussi aborder les processsus de plainte. 
+
+Étape 2 - Déploiement - Méthologie
+L'étape 2 est le moment où l'outil sera déployé. Le déploiement comportera à fois fin des besoins en programmation, 
+
+Dans « programmation et web », le langage utilisé pour la programmation de l'outil et le site pour l'hébergement seront détaillés ainsi que les raisons pour lesquels ils ont été sélectionnés. 
+
+Dans « bases de données », je préciserais quelle type de base de données a été choisie pour le projet. Les considérations seront autant au niveau informatique (i.e. MongoDB vs MySQL) qu'au niveau de la science des données. 
+
+Dans « confidentialité et sécurité », il sera abordé les conventions nord-américaines de sécurité en santé et en quoi l'outil créé pour ce projet y répond. 
+
+Dans « promotion de l'outil », nous aborderons les moyens prévus pour promouvoir l'utilisation de l'outil. Idéalement, cette promotion devrait être faite avec le MSSS et/ou Santé Québec. 
+
+Étape 3 - Résultats et données
+À l'étape 3, c'est là que l'outil a été déployé depuis suffisamment longtemps pour avoir un bassin de données significatifs. L'objectif de cette section est de faire l'analyse de données pour faire des découvertes à propos de la santé des Québécois-e-s. 
+
+Dans « retour sur l'utilisation », on abordera si l'outil a été utilisé plus ou moins que prévu et quelles en sont les raisons potentielles. 
+
+Dans « données significations », nous indiquerons si notre hypothèse a été avérée: à savoir, un tel projet a-t-il permis de faire des découvertes intéressantes sur la santé au Québec et, si tel est le cas, quelles sont ces découvertes?
+
+Dans « dashboards », j'aborderais la page de tableaux de bord. Je préciserai pourquoi ceux-ci ont été sélectionnés et les contributions que ceux-ci pourront avoir dans le monitoring de la santé publique. 
+
+
+1. L'objet, le contexte et les enjeux de la recherche
+Ce projet de recherche s'intéresse aux données de santé des patients. 
+
+D'une part, il existe les « données de santé générées par les patients » de l'anglais « patient-generated health data ». Ce sont des données créées, enregistrée ou recueillies par les patients. D'autre part, il existe aussi les résultats rapportés par les patients de l'anglais « patient-reported outcomes (PRO) ». Le résultat mentionné peut être positif ou négatif, quantifiable ou mesurable. « 68% des patients consommant quotidiennement 50mg de mélatonine rapporte avoir plus de facilité à s'endormir » est un exemple de donnée de ce type. Enfin, il existe aussi des données administratives en santé. Au Québec, cela inclut notamment les données issues des mécanismes de plaintes, plaintes médicales et les rapports d'incidents. 
+
+Selon l'épistémologie des points de vue, la connaissance est toujours générée à partir d'un point de vue particulier. Pour connaître complètement un phénomène, il faut l'étudier à partir de tous les points de vue, autrement, on ne peut en connaître qu'une mince partie et cela a de fortes chances d'induire des biais. Pour bien connaître la santé et la médecine, il faut donc prendre en compte tous les points de vue: incluant le point de vue des patients. 
+
+<!--Définissez précisément l’objet étudié.
+Le cadre géographique et chronologique du sujet.
+Expliquez le contexte pratique.
+Expliquez le contexte théorique.
+Montrez les enjeux sociaux, économiques, politiques et cognitifs de l’objet.
+Cas particulier de la recherche-action : parlez de l’objectif à réaliser, la logique suivie et les démarches envisagées.-->
+
+2. La problématique
+Le problème est qu'actuellement, le point de vue patient n'est pas suffisamment pris en compte. En effet, bien qu'il existe des plateformes où les patients peuvent s'exprimer, l'enjeu est que celles-ci ne permettent pas une systémisation à un niveau permettant d'en faire une connaissance scientifique ou ne conservent pas le point de vue originel. 
+
+D'un côté, il y a des structures institutionnelles où les patients peuvent donner leurs point de vue, mais seulement dans un contexte prédéfini. Dans le contexte d'études ou de structures administratives telles que le Régime d'examen des plaintes, les patients sont en mesure de manifester leur point de vue. Celui-ci est alors systématiser pour en faire une connaissance. Or, La personne qui dirige le processus n'est pas elle-même patient: c'est un chercheur ou un agent administratif. Le point de vue du patient est donc modelé de sorte à rentrer dans des cases qui ne réflètent pas toujours le point de vue réel du patient. 
+
+De l'autre côté, il existe des structures informelles où les patients peuvent donner leur point de vue, mais celui-ci n'est alors pas pris en compte dans la constitution du savoir. Par exemple, beaucoup de patients rapportent dans des communautés de patients telles que r/antipsychiatry la difficulté d'obtenir du soutien médical pour l'arrêt de médicaments. Or, cette donnée n'est pas prise en compte dans la recherche.
+
+Dans tous les cas, la réalité est la majorité des patients vont avoir des résultats de santé et générer des données de santé sans que le tout soit pris en compte. La majorité des patients qui prennent des antidépresseurs ne seront ni actifs sur des forums de patients, ni impliqués dans des projets de recherche, ni impliqué. Ils vivront leurs résultats de santé dans l'isolation totale, sans que ces données contribuent à la connaissance. 
+
+L'hypothèse de cette recherche est que la mise en place d'une structure technologique accessible permettant aux patients de s'exprimer sur leurs résultats contribueraient à générer un bassin de connaissance par et pour les patients. 
+
+Une seconde hypothèse est qu'il existe beaucoup plus de résultats négatifs dans la réalité que ce qui est rapporté dans les études. 
+<!--
+Explicitez au mieux la problématique de départ (même si elle peut changer par la suite).
+Indiquez les questions de recherche.
+Mettez en avant les hypothèses.
+Faites une présentation de quelques axes du sujet.-->
+
+3. La méthodologie
+Pour tester l'hypothèse, quoi de mieux que de mettre en place la solution imaginée! Créer l'outil, l'héberger sur le web et le publiciser permettra de recueillir le point de vue des patients. 
+
+Il pourra par 
+<!--La méthodologie 
+Expliquez quelle(s) méthodologie(s) utiliser et pourquoi ?
+Enquête de terrain ?
+Méthodologie expérimentale ?
+Analysez de corpus ?
+Mettez en avant les méthodes d’analyse de données qui vont être utilisées.
+Expliquez les options épistémologiques choisies.-->
+
+4. Les objectifs
+
+<!--Objectifs et résultats attendus.
+Hypothèses.-->
+
+5. Compétences requises par le projet et compétences du candidat
+Il y a une partie de connaissance technique qui nécessiterait un travail collaboratif avec un-e expert-e du domaine des technologies. Notamment, un tel projet devrait s'appuyer sur le protocole de sécurité HIPAA et le protocole d'échange d'information HL7, ce qui demande une expertise technique dépassant la mienne. 
+
+Les compétences et expériences principales requises par le projet pourront être vues sur le reste de mon portfolio. Ce sont les compétences suivantes: #Analyse_de_données, #Programmation_web, #Épistémologie_de_la_santé, etc. 
+
+<!--Montrez que vous avez les compétences scientifiques pour mener à bien votre projet.
+Mettez en avant vos compétences actuelles.-->
+
+6. Quelles contributions attendues ?
+Sur le plan pratique, le projet aura plusieurs retombées positives décrites ailleurs dans ce document. 
+<!--Apports sur le plan théorique ?
+Apports sur le plan pratique ?-->
+
+Considérations méthologiques
+
+Dans le cas de ce travail de recherche, il ne sera pas possible de prendre en compte tous les types de données patients. Néanmoins, en connectant le portail au DSN du MSSS, les bases seront déjà mises en place pour élargir la portée du projet. 
+
+Les données de santé générées par les patients pourront être prises en compte ultérieurement. Par exemple, une application telle que Strava permet aux patients d'obtenir des données précises sur leur niveau d'activité physique (et nous savons que l'activité physique est un déterminant de santé important). Si une connexion existe déjà entre le portail Patient et le DSN du MSSS, il ne faudra que fournir aux patients une interface pour se connecter à l'API Strava pour que ces données soient disponibles pour le personnel de santé des établissements. 
+
+Dans le même ordre d'idée, les processus administratifs où les patients énoncent leurs insatisfactions ne seront pas pris en compte dans cette phase du projet. Or, tout comme pour les données de santé générées par les patients, la connexion sera déjà effectuée de telle sorte qu'il sera possible éventuellement d'en arriver là. 
+
+7. Quel calendrier échéancier ? Quel financement ?
+Idéalement, le projet se ferait sur 4 ans. La première année servirait à programmer l'outil, valider la volonté du MSSS à collaborer au projet, vérifier les fonctionnalités de l'outil qui devront être abandonnées en raison du cadre légal, etc. 
+
+Au niveau du financement, un 100k$ par année serait nécessaire pour les frais récurrent: salaires, hébergement web du portail et audits de sécurité annuels. Des frais de 20k$ devront être prévus pour la publicité lors du lancement de l'application.
+
+Pour le financement comme pour le calendrier, vous trouverez les détails à la fin de la demande. 
+
+<!--Faites un rétro-planning jusqu’à la soutenance.
+Financement par bourse ?
+Quel budget ?-->
+
+
+<!--8. Pourquoi ce directeur de thèse ? En quoi ce travail s’insère-t-il dans les axes du laboratoire ? [Facultatif]
+Expliquez pourquoi vous avez choisi cette personne pour être votre directeur de thèse.
+Pourquoi ce laboratoire ?-->
+
+
+8. Donner une bibliographie succincte
+
+
+<!--Intégrez des revues internationales de langue anglaise.
+Respectez les normes de présentation en vigueur dans la discipline (souvent normes APA, sans oublier de mentionner les DOI).-->
+
+
+<!--10. Faire corriger et relire le document
+Attention aux fautes de grammaire et d’orthographe.
+Avoir un style académique impeccable.-->
