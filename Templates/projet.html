@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
-{% block title %}userVoice project{% endblock %}
+{% block title %}userVoice project | {{ title }}{% endblock %}
 {% block content %}
 
-<div class="container-fluid row">{{ text | safe}}</div>
+<div class="p-4 mb-4 roundedg-0 border rounded overflow-hidden flex-md-row shadow-sm position-relative">
+    <h1>{{ title }}</h1>
+    <p>{{ text | safe}}</p>
+</div>
 
 {% endblock %}  
