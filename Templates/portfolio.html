@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block title %}{{ Theme }}{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+    <h1>{{ Theme }}</h1> 
+    <!-- Post item-->
+    {% for post in posts %}
+    {% if loop.index0 %2 == 0 %}
+        {% if loop.index0 != 0 %}
+            </div>
+        {% endif %}
+        <div class="row mb-2">
+    {% endif %}
+    <div class="col-md-6 d-flex align-items-stretch">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm position-relative d-flex flex-column">
+            <div class="col p-4 d-flex flex-column position-static">
+                
+                {% if post[4] %}
+                    <span><i class="fa fa-calendar-o"></i>   {{ post[4] }}</span>
+                {% endif %}   
+                <h5 class="mb-0 title-clamp">{{ post[1] }}</h5> 
+                {% if post[2] %}
+                    <div class="mb-1 text-body-secondary">{{ post[2] }}<a href="{{ post[3]}}"></h3><i class="fas fa-link" ></i></a></div>
+                {% endif %}
+                
+            </div>
+                <div class="col-auto d-none d-lg-block">
+                    {% if post[5] %}
+                    <img class="img-fluid p-1" alt="Responsive image" width="200" src="/static/images/{{ post[5] }}" role="img">
+                    {% else %}
+                    <span></span>
+                    {% endif %}
+                </div>
+            <div style="align-self: flex-end;">
+                <p class="mb-1 line-clamp" style="padding: 0 1.5rem ">{{ post[6] | safe}}</p>
+            </div>                
+            <button class="modal-btn btn btn-secondary" style="align-self: flex-end;" target="{{ post[1][0:20] }}">En apprendre davantage</a>
+
+            </div>
+        </div>
+
+    <div id="{{ post[1][0:20] }}" class="modal" style="background-color:gray">
+        <div class="modal-dialog" role="document" style="top: 10%;">
+            <div class="modal-content">
+
+                <div class="modal-header justify-content-end">
+                    <span class="close">×</span></div>
+                        <div class="modal-header">      
+                    
+                    <h5 class="modal-title">{{ post[1] }}</h5>  
+                    {% if post[5] %}              
+                        <img class="img-fluid" alt="Responsive image" width="200" src="/static/images/{{ post[5] }}" role="img">
+                    {% endif %}
+                </div>
+                <div class="modal-body">
+                    <p>{{ post[6] | safe}}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary close">Retour</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% if activity %}
+<script>document.getElementById("{{ activity }}").style.display = 'block';</script>
+{% endif %}
+{% endblock %}

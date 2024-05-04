@@ -5,7 +5,7 @@ flask run
 """
 
 from flask import Flask, render_template, make_response
-import csv, re
+import csv, re, os
 from .ngram import Ngram
 
 activities = []
@@ -19,6 +19,34 @@ with open("static/data/nietzsche.txt", "r", encoding="utf-8") as f:
 textComplete = textComplete[15025:-1054]
 model = Ngram(textComplete, 3)
 
+def load():
+    """
+    Load all csv files from static into data as their name
+    """
+    d = {}
+    directory = os.getcwd()
+    static = os.path.join(directory,"static")
+    for file in os.listdir(static):
+        if file.endswith(".csv"):
+            with open(f"{static}/{file}", 'r', encoding='utf-8') as csvfile:
+                name = os.path.basename(file).split(".")[0]
+                spamreader = csv.DictReader(csvfile, delimiter=";", quotechar='|')
+                print(spamreader)
+                #next(spamreader, None)
+                rows = []
+                for row in spamreader:
+                    rows.append(row)
+                print(rows)
+                d[name] = rows
+    return d
+
+data = load()
+
+data["skills"].sort(key=lambda x: int(x["Years"]), reverse=True)
+data["communications"].sort(key=lambda x: x["Date"], reverse=True)
+data["experiences"].sort(key=lambda x: x["StartDate"], reverse=True)
+
+
 app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -28,12 +56,17 @@ def index():
 def nietzsche():
     return render_template("nietzsche.html", quote=model.generate(5))
 
-@app.route('/cv/<theme>')
-def cv(theme):
+@app.route('/portfolio/<theme>')
+def portfolio(theme):
     posts = [post for post in activities if post[0] == f"{theme}"]
     for idx, post in enumerate(posts):
-        posts[idx][6] = re.sub("(\W)__([A-Za-z\sÀ-ÿ-·']+)__(\W)", fr"\1<a href='/subject/\2'>\2</a>\3", post[6])
-    return render_template('cv.html', posts = posts, theme=theme)
+        posts[idx][6] = re.sub("(\W)__([A-Za-z\sÀ-ÿ-·'«»]+)__(\W)", fr"\1<a href='/subject/\2'>\2</a>\3", post[6])
+    return render_template('portfolio.html', posts = posts, theme=theme)
+
+@app.route('/resume')
+def newresume():
+    emplois = [post for post in data["experiences"] if post["Theme"] == "emplois"]
+    return render_template('resume.html', data=data, emplois = emplois)
 
 @app.route('/subject/<activity>')
 def subject(activity):
@@ -44,7 +77,7 @@ def subject(activity):
         posts[idx][6] = re.sub("(\W)__([A-Za-z\sÀ-ÿ-·']+)__(\W)", fr"\1<a href='/subject/\2'>\2</a>\3", post[6])
         if post[1] == f"{activity}" or post[2] == f"{activity}":
             activity = post[1][0:20]
-    return render_template('cv.html', posts = posts, theme=theme, activity = activity)
+    return render_template('portfolio.html', posts = posts, theme=theme, activity = activity)
 
 
 @app.route('/projet/<theme>')

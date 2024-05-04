@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow&family=Julius+Sans+One&family=Open+Sans&family=Source+Sans+Pro&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='cv.css') }}">
+</head>
+<body>
+  <page size="A4">
+    <div class="container">
+      <div class="leftPanel">
+        <div class="details">
+          <div class="item bottomLineSeparator">
+            <h2>
+              Coordonnées
+            </h2>
+            <div class="smallText">
+              <p>
+                <i class="fa fa-phone contactIcon" aria-hidden="true"></i>
+                {{ data['user'][0]["Phone"] }}
+              </p>
+              <p>
+                <i class="fa fa-envelope contactIcon" aria-hidden="true"></i>
+                <a href="{{ data['user'][0]['Email'] }}" style="overflow: hidden;
+                direction: rtl; ">
+                  {{ data['user'][0]["Email"] }}
+                </a>
+              </p>
+              <p>
+                <i class="fa fa-map-marker contactIcon" aria-hidden="true"></i>
+                {{ data['user'][0]["City"] }}
+              </p>
+            </div>
+          </div>
+
+          <div class="item bottomLineSeparator">
+            <h2>
+              Compétences
+            </h2>
+            <div class="smallText">
+                {% for post in data["skills"] if post["Theme"] == "competences" or post["Theme"] == "technical" %}
+                    <div class="skill">
+                        <div>
+                            <span>{{ post["Titre"] }}</span>
+                        </div>
+                        <div class="yearsOfExperience">
+                        <span class="alignright">{{ post["Years"] }}</span>
+                        <span class="alignleft">an{% if not post["Years"] == 1 %}s{% endif %}</span>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+          </div>
+
+
+          
+          <div class="item">
+
+            
+
+            <h2>
+              Éducation
+            </h2>
+
+            {% for post in data["experiences"] if post["Theme"] == "etudes"%}
+            
+            <div class="smallText">
+              <span class="bolded white">
+                {{ post['Titre'] }}                
+              </span>
+              <p >
+                {{ post['Organisation'] }}, 
+                {{ post['StartDate'][:4] }} à {% if post['EndDate'] %}{{ post['EndDate'][:4] }}{% else %}auj.{% endif %}
+              </p>
+            </div>
+            {% endfor %}
+          </div>
+
+          
+        </div>
+        
+      </div>
+      <div class="rightPanel">
+        <div>
+          <h1>
+            {{ data['user'][0]["FirstName"] }} {{ data['user'][0]["LastName"] }}
+          </h1>
+          <div class="smallText">
+            <h3>
+              Santé | Équité | Technologies
+            </h3>
+          </div>
+        </div>
+        <div>
+          <h2>
+            À propos
+          </h2>
+          <div class="smallText">
+            <p>
+              {{ data['user'][0]["AboutMe"] }}
+            </p>
+          </div>
+        </div>
+        <div class="workExperience">
+          <h2>
+            Expériences
+          </h2>
+          <ul>
+          {% for post in emplois[:5] %}
+            <li>
+              <div class="jobPosition">
+                <span class="bolded">
+                  {{ post['Titre'] }}
+                </span>
+                <span>
+                  {{ post['StartDate'][:4] }} à {% if post['EndDate'] %}{{ post['EndDate'][:4] }}{% else %}auj.{% endif %}
+                </span>
+              </div>
+              <div class="projectName bolded">
+                <span>
+                  {{ post['Organisation'] }}
+                </span>
+              </div>
+              <div class="smallText">
+                <ul>
+                  {% set list1 = post['Tasks'].split('., ') %}
+                  {% for item in list1 %}
+                      <li style="text-align:justify">{{ item }}</li>
+                  {% endfor %} 
+                </ul>
+                <p>
+                  <span class="bolded">Compétences: </span>{{ post['Skills'] }}
+                </p>
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </page>
+  <page size="A4">
+    <div class="container">
+      <div class="leftPanel">
+        <div class="details">
+        <div class="item bottomLineSeparator">
+
+          <h2>
+            Prix et bourses
+          </h2>
+
+          {% for post in data["skills"] if post["Theme"] == "award"%}
+          <div class="smallText">
+            <div>
+              <span class="bolded white">{{ post["Titre"] }}</span>
+            </div>
+            <div class="skill">
+              <div>
+                  <span>{{ post['Organisation'] }}</span>
+              </div>
+              <div class="yearsOfExperience">
+              <span class="alignright"></span>
+              <span class="alignleft">{{ post['Years'][:4] }}</span>
+              </div>
+          </div></div>
+          {% endfor %}
+        </div>
+
+      <div class="item">
+        <h2>
+          Certifications
+        </h2>
+        
+        {% for post in data["experiences"] if post["Theme"] == "certifications"%}
+        <div class="smallText">
+        <div>
+          <span class="bolded white">{{ post["Titre"] }}</span>
+        </div>
+        <div class="skill">
+          <div>
+              <span>{{ post['Organisation'] }}</span>
+          </div>
+          <div class="yearsOfExperience">
+          <span class="alignright"></span>
+          <span class="alignleft">{{ post['StartDate'][:4] }}</span>
+          </div>
+      </div></div>
+        {% endfor %}
+      </div></div>      </div>
+
+
+
+      <div class="rightPanel">
+        <div class="workExperience">
+      <ul>
+        {% for post in emplois[5:] %}
+            <li>
+              <div class="jobPosition">
+                <span class="bolded">
+                  {{ post['Titre'] }}
+                </span>
+                <span>
+                  {{ post['StartDate'][:4] }} à {% if post['EndDate'] %}{{ post['EndDate'][:4] }}{% else %}auj.{% endif %}
+                </span>
+              </div>
+              <div class="projectName bolded">
+                <span>
+                  {{ post['Organisation'] }}
+                </span>
+              </div>
+              <div class="smallText">
+                <ul>
+                  {% set list1 = post['Tasks'].split('., ') %}
+                  {% for item in list1 %}
+                      <li style="text-align:justify">{{ item }}</li>
+                  {% endfor %} 
+                </ul>
+                <p>
+                  <span class="bolded">Compétences: </span>{{ post['Skills'] }}
+                </p>
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="workExperience">
+          <h2>
+            Communications et publications
+          </h2>
+          {% for post in data["communications"] %}
+              <div class="jobPosition">
+                <span class="bolded">
+                  {{ post['Titre'] }}
+                </span>
+                <span>
+                  {{ post['Date'][:4] }} 
+                </span>
+              </div>
+              <div class="projectName smallText">
+                <span>
+                  {{ post['Type'] }}, pour <i>{{ post['Organisation'] }}</i>
+                </span>
+              </div>
+            {% endfor %}
+        </div>
+      </div>
+
+      </div>
+  </page>   
+</body>
+</html>
